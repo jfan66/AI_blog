@@ -1,5 +1,5 @@
 # Web框架 - 用于构建网站后端
-Flask==3.0.0
+Flask==2.3.3
 
 # HTTP请求库 - 用于调用飞书API
 requests==2.31.0
@@ -11,7 +11,7 @@ python-dotenv==1.0.0
 Flask-Caching==2.0.2
 
 # Flask依赖项 - 以下是Flask框架所需的依赖包
-Werkzeug==3.0.1  # WSGI工具库
+Werkzeug==2.3.7  # WSGI工具库
 Jinja2==3.1.2    # 模板引擎
 MarkupSafe==2.1.3  # 安全HTML字符串处理
 itsdangerous==2.1.2  # 数据签名工具
