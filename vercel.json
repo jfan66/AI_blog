@@ -13,6 +13,12 @@
     }
   ],
   "env": {
-    "PYTHONUNBUFFERED": "true"
+    "PYTHONUNBUFFERED": "true",
+    "FEISHU_APP_ID": "cli_a73563d3b0fa900d",
+    "FEISHU_APP_SECRET": "c8gTrrXxvX62KRbfQoBD8drV4NN1SRnH",
+    "BASE_ID": "LsKdbdQnaagwSysm5EFccXaUnOc",
+    "TABLE_ID": "tblEDojeqQuUcgPi",
+    "SECRET_KEY": "cbc7327388e75eae6803a772002ec3912d5e5600416f6a5b8003e0e9effe52e6",
+    "DEBUG": "False"
   }
 }
