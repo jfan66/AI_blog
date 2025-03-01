@@ -1,0 +1,28 @@
+# Python缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 环境变量文件
+.env
+.env.*
+
+# 虚拟环境
+venv/
+env/
+.venv/
+
+# IDE文件
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 日志文件
+*.log
+
+# 本地配置文件
+instance/
+
+# 评论数据文件（如果不想公开）
+comments.json

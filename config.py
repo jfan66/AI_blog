@@ -9,14 +9,14 @@ class Config:
     # 飞书应用配置
     # FEISHU_APP_ID: 飞书开放平台应用的唯一标识
     # FEISHU_APP_SECRET: 飞书应用的密钥，用于API认证
-    FEISHU_APP_ID = os.getenv("FEISHU_APP_ID", "cli_a73563d3b0fa900d")
-    FEISHU_APP_SECRET = os.getenv("FEISHU_APP_SECRET", "c8gTrrXxvX62KRbfQoBD8drV4NN1SRnH")
+    FEISHU_APP_ID = os.getenv("FEISHU_APP_ID")
+    FEISHU_APP_SECRET = os.getenv("FEISHU_APP_SECRET")
     
     # 多维表格配置
     # BASE_ID: 飞书多维表格应用的ID
     # TABLE_ID: 具体表格的ID，存储博客文章数据
-    BASE_ID = os.getenv("BASE_ID", "LsKdbdQnaagwSysm5EFccXaUnOc")
-    TABLE_ID = os.getenv("TABLE_ID", "tblEDojeqQuUcgPi")
+    BASE_ID = os.getenv("BASE_ID")
+    TABLE_ID = os.getenv("TABLE_ID")
     
     # Flask应用配置
     # SECRET_KEY: Flask会话安全密钥
