@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}{{ blog.title }} - AI知识博客{% endblock %}
+
+{% block content %}
+<article class="card">
+    <h1 class="card-title">{{ blog.title }}</h1>
+    <div class="card-meta">发布于: {{ blog.date|format_timestamp }}</div>
+    
+    {% if blog.quote %}
+    <div class="card-quote">
+        <h3>精选金句</h3>
+        <p>{{ blog.quote|clean_text }}</p>
+    </div>
+    {% endif %}
+    
+    {% if blog.summary %}
+    <div class="card-summary">
+        <h3>内容概要</h3>
+        <p>{{ blog.summary|clean_text }}</p>
+    </div>
+    {% endif %}
+    
+    {% if blog.link %}
+    <div class="article-content">
+        <h3>原文链接</h3>
+        <p><a href="{{ blog.link }}" target="_blank">查看原文</a></p>
+    </div>
+    {% endif %}
+    
+    <div class="article-navigation">
+        <a href="{{ url_for('index') }}">返回首页</a>
+    </div>
+</article>
+
+<!-- 评论区 -->
+<section class="card">
+    <h2>评论</h2>
+    
+    <!-- 评论列表 -->
+    {% if comments %}
+        <div class="comments-list">
+            {% for comment in comments %}
+                <div class="comment">
+                    <div class="comment-meta">
+                        <strong>{{ comment.author }}</strong> 
+                        <span class="comment-date">{{ comment.created_at }}</span>
+                    </div>
+                    <div class="comment-content">{{ comment.content }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>暂无评论</p>
+    {% endif %}
+    
+    <!-- 评论表单 -->
+    <form method="post" class="comment-form">
+        <div class="form-group">
+            <label for="author">昵称</label>
+            <input type="text" id="author" name="author" placeholder="请输入您的昵称" required>
+        </div>
+        <div class="form-group">
+            <label for="content">评论内容</label>
+            <textarea id="content" name="content" rows="4" placeholder="请输入您的评论" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">提交评论</button>
+    </form>
+</section>
+{% endblock %}

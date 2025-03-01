@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}页面未找到 - AI知识博客{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1 class="card-title">404 - 页面未找到</h1>
+    <p>抱歉，您请求的页面不存在。</p>
+    <div class="article-navigation">
+        <a href="{{ url_for('index') }}">返回首页</a>
+    </div>
+</div>
+{% endblock %}

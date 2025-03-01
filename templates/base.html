@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI知识博客{% endblock %}</title>
+    <style>
+        :root {
+            --primary-color: #007AFF;
+            --background-color: #F5F5F7;
+            --text-color: #1D1D1F;
+            --secondary-text-color: #86868B;
+            --card-background: #FFFFFF;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: none; /* 隐藏原来的header，因为我们已经将标题移到了banner中 */
+        }
+
+        .card {
+            background-color: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .card-meta {
+            color: var(--secondary-text-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .card-quote {
+            font-weight: bold;
+            color: var(--text-color);
+            margin: 10px 0;
+            padding-left: 10px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .card-summary {
+            color: var(--text-color);
+            margin: 10px 0;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 评论系统样式 */
+        .comments-list {
+            margin: 20px 0;
+        }
+        
+        .comment {
+            margin-bottom: 15px;
+        }
+        
+        .comment-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .comment-date {
+            color: var(--secondary-text-color);
+        }
+        
+        .comment-content {
+            line-height: 1.5;
+        }
+        
+        .comment-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        /* 顶部区域样式 */
+        .banner {
+            width: 100%;
+            background-color: var(--card-background);
+            margin-bottom: 0;
+            overflow: hidden;
+            text-align: center;
+            padding: 15px 0; /* 减小上下padding */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #banner-image {
+            width: 100px; /* 减小图片尺寸 */
+            height: 100px; /* 减小图片尺寸 */
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 0 auto 5px; /* 减小下边距 */
+            display: block;
+        }
+        
+        .banner h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+        
+        /* 为主内容添加上边距，避免被固定导航栏遮挡 */
+        main.container {
+            margin-top: 230px; /* 增加上边距 */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+            
+            #banner-image {
+                width: 80px; /* 移动端更小的图片 */
+                height: 80px;
+            }
+            
+            .banner h1 {
+                font-size: 1.5rem;
+            }
+
+            main.container {
+                margin-top: 200px; /* 移动端增加上边距 */
+            }
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="banner">
+        <div class="container">
+            <img id="banner-image" src="{{ url_for('static', filename='images/fanjun.jpeg') }}" alt="博客顶部图片">
+            <h1><a href="/">AI知识博客</a></h1>
+        </div>
+    </div>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}AI知识博客 - 首页{% endblock %}
+
+{% block content %}
+    {% if blogs %}
+        {% for blog in blogs %}
+            <article class="card">
+                <h2 class="card-title"><a href="{{ url_for('blog_detail', blog_id=blog.id) }}">{{ blog.title }}</a></h2>
+                <div class="card-meta">发布于: {{ blog.date|format_timestamp }}</div>
+                {% if blog.quote %}
+                <div class="card-quote">{{ blog.quote|clean_text }}</div>
+                {% endif %}
+                {% if blog.summary %}
+                <div class="card-summary">{{ blog.summary[:100]|clean_text }}{% if blog.summary|length > 100 %}...{% endif %}</div>
+                {% endif %}
+                <div>
+                    <a href="{{ url_for('blog_detail', blog_id=blog.id) }}" target="_blank">阅读全文</a>
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <div class="card">
+            <p>暂无博客文章，请在飞书多维表格中添加内容。</p>
+        </div>
+    {% endif %}
+{% endblock %}
